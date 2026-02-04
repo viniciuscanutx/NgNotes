@@ -1,0 +1,294 @@
+.sidebar {
+  margin: 6px;
+  width: 26vh;
+  height: 98vh;
+  background-color: #1A1B26;
+  padding: 20px;
+  border-radius: 10px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+  .sidebar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ffffff;
+    background-color: #1A1B26;
+
+    .sidebar-title {
+      margin-top: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: #ffffff;
+      background-color: #1A1B26;
+    }
+  }
+
+  .separator {
+    width: calc(100% + 40px);
+    margin: 16px -20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar-content {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 16px;
+    color: #ffffff;
+
+    .btn.btn-primary.sidebar-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #1A1B26;
+      background-color: #ffffff;
+      border-color: #ffffff;
+      flex-shrink: 0;
+
+      &:hover {
+        background-color: #e0e0e0;
+        border-color: #e0e0e0;
+      }
+    }
+
+    .sidebar-section {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      margin-top: 42px;
+
+      .sidebar-section-title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 0 10px 0;
+        flex-shrink: 0;
+      }
+
+      .notes-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .notes-list-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.15s;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .notes-list-icon {
+          font-size: 0.9rem;
+          color: rgba(255, 255, 255, 0.6);
+          flex-shrink: 0;
+        }
+
+        .notes-list-content {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          min-width: 0;
+        }
+
+        .notes-list-title {
+          font-size: 0.9rem;
+          color: #ffffff;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .notes-list-date {
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.45);
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .sidebar-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sidebar-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+
+      fa-icon {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    .sidebar-user-wrapper {
+      position: relative;
+    }
+
+    .sidebar-user-panel {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      margin-bottom: 8px;
+      padding: 6px;
+      border-radius: 8px;
+      background-color: #252630;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sidebar-user-panel-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+
+      fa-icon {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+      }
+
+      &--logout:hover {
+        background-color: rgba(220, 80, 80, 0.25);
+        color: #ff8a8a;
+
+        fa-icon {
+          color: #ff8a8a;
+        }
+      }
+    }
+
+    .sidebar-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.06);
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      transition: background-color 0.15s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .sidebar-user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      fa-icon {
+        font-size: 1rem;
+        color: #ffffff;
+      }
+    }
+
+    .sidebar-user-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .sidebar-user-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-user-email {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

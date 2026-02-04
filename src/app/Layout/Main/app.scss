@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+main {
+  margin-left: calc(12px + 26vh);
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}

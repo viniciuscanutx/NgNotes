@@ -1,0 +1,18 @@
+<div class="scrollbar-wrapper">
+  <div
+    class="scrollbar-content"
+    #scrollContent
+    (scroll)="onScroll()">
+    <ng-content></ng-content>
+  </div>
+  @if (scrollable) {
+    <div class="scrollbar-track" (mousedown)="onTrackClick($event)">
+      <div
+        class="scrollbar-thumb"
+        [style.height.px]="thumbHeight"
+        [style.transform]="'translateY(' + thumbTop + 'px)'"
+        (mousedown)="onThumbMouseDown($event)">
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,64 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <fa-icon [icon]="iconLogo" class="sidebar-logo"></fa-icon>
+    <h1 class="sidebar-title">NgNotes</h1>
+  </div>
+  <div class="separator"></div>
+  <div class="sidebar-content">
+    <button class="btn btn-primary sidebar-button">
+      <fa-icon [icon]="iconPlus"></fa-icon>
+    </button>
+    <section class="sidebar-section">
+      <h2 class="sidebar-section-title">Notas recentes</h2>
+      <app-scrollbar>
+        <ul class="notes-list">
+          @for (note of recentNotes; track note.id) {
+            <li class="notes-list-item">
+              <fa-icon [icon]="iconFileLines" class="notes-list-icon"></fa-icon>
+              <div class="notes-list-content">
+                <span class="notes-list-title">{{ note.title }}</span>
+                <span class="notes-list-date">{{ note.updatedAt }}</span>
+              </div>
+            </li>
+          }
+        </ul>
+      </app-scrollbar>
+    </section>
+  </div>
+  <div class="separator"></div>
+  <div class="sidebar-footer">
+    <nav class="sidebar-menu">
+      <button type="button" class="sidebar-menu-item" (click)="changeTheme()">
+        <fa-icon [icon]="iconMoon"></fa-icon>
+        <span>Modo Escuro</span>
+      </button>
+      <button type="button" class="sidebar-menu-item">
+        <fa-icon [icon]="iconGear"></fa-icon>
+        <span>Configurações</span>
+      </button>
+    </nav>
+    <div class="sidebar-user-wrapper" #userPanelWrapper>
+      @if (userPanelOpen) {
+        <div class="sidebar-user-panel">
+          <button type="button" class="sidebar-user-panel-item" (click)="editProfile()">
+            <fa-icon [icon]="iconUserPen"></fa-icon>
+            <span>Editar perfil</span>
+          </button>
+          <button type="button" class="sidebar-user-panel-item sidebar-user-panel-item--logout" (click)="logout()">
+            <fa-icon [icon]="iconLogout"></fa-icon>
+            <span>Sair</span>
+          </button>
+        </div>
+      }
+      <button type="button" class="sidebar-user" (click)="toggleUserPanel()">
+        <div class="sidebar-user-avatar">
+          <fa-icon [icon]="iconUser"></fa-icon>
+        </div>
+        <div class="sidebar-user-info">
+          <span class="sidebar-user-name">{{ user.name }}</span>
+          <span class="sidebar-user-email">{{ user.email }}</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
