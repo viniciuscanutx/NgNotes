@@ -1,0 +1,17 @@
+<nav class="bottom-nav">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="bottom-nav-item">
+    <fa-icon [icon]="iconHome"></fa-icon>
+  </a>
+  <a routerLink="/notes" routerLinkActive="active" class="bottom-nav-item">
+    <fa-icon [icon]="iconTag"></fa-icon>
+  </a>
+  <a routerLink="/settings" routerLinkActive="active" class="bottom-nav-item">
+    <fa-icon [icon]="iconSettings"></fa-icon>
+  </a>
+  <a routerLink="/profile" routerLinkActive="active" class="bottom-nav-item">
+    <fa-icon [icon]="iconPerson"></fa-icon>
+  </a>
+  <button type="button" class="bottom-nav-add" (click)="onNewNote()">
+    <fa-icon [icon]="iconPlus"></fa-icon>
+  </button>
+</nav>

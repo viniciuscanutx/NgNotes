@@ -11,6 +11,10 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   z-index: 1000;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   .sidebar-header {
     display: flex;
     flex-direction: row;

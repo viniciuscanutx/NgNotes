@@ -1,0 +1,39 @@
+<article class="note-card" [class]="getCardColorClass()">
+  <span class="note-card-tag">
+    <fa-icon [icon]="iconTag"></fa-icon>
+    {{ note.tag }}
+  </span>
+  <div class="separator"></div>
+  <h3 class="note-card-title">{{ note.title }}</h3>
+  <div class="note-card-body">
+    @if (note.type === 'checklist') {
+      <ul class="note-checklist">
+        @for (item of note.checklistItems; track item.id) {
+          <li class="note-checklist-item" [class.checked]="item.checked" (click)="onToggleChecklistItem(item)">
+            <fa-icon [icon]="item.checked ? iconSquareCheck : iconSquare" class="note-checklist-icon"></fa-icon>
+            <span>{{ item.text }}</span>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="note-card-text">{{ note.content }}</p>
+    }
+  </div>
+  <footer class="note-card-footer">
+    <div class="note-card-meta">
+      <span class="note-card-date">{{ note.date | date:'dd/MM/yyyy' }}</span>
+    </div>
+    <div class="note-card-actions">
+      <button type="button" class="note-card-action" (click)="onShareNote()">
+        <fa-icon [icon]="iconShare"></fa-icon>
+      </button>
+      <button
+        type="button"
+        class="note-card-action"
+        [class.favorited]="note.favorited"
+        (click)="onToggleFavorite()">
+        <fa-icon [icon]="iconHeart"></fa-icon>
+      </button>
+    </div>
+  </footer>
+</article>

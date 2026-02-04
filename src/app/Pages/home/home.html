@@ -1,1 +1,81 @@
-<p>home works!</p>
+<div class="home">
+  <header class="home-header">
+    <div class="home-header-top">
+      <div class="home-header-greeting">
+        <h1 class="home-greeting">{{ greeting }}, Usuário</h1>
+        <div class="home-date-wrapper">
+          <span class="home-date">{{ formattedDate }}</span>
+        </div>
+      </div>
+      <div class="home-view-actions">
+        <button type="button" class="home-view-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')">
+          <fa-icon [icon]="iconList"></fa-icon>
+        </button>
+        <button type="button" class="home-view-btn" [class.active]="viewMode() === 'grid'" (click)="viewMode.set('grid')">
+          <fa-icon [icon]="iconGrid"></fa-icon>
+        </button>
+      </div>
+    </div>
+    
+    <div class="home-header-bottom">
+      <div class="home-search-wrapper">
+        <fa-icon [icon]="iconSearch" class="home-search-icon"></fa-icon>
+        <input
+          type="text"
+          class="home-search"
+          placeholder="Buscar notas..."
+          [value]="searchFilter()"
+          (input)="searchFilter.set($any($event.target).value)">
+      </div>
+      <div class="home-tabs-mobile">
+        <button
+          type="button"
+          class="home-tab-mobile"
+          [class.active]="activeTab() === 'notes'"
+          (click)="activeTab.set('notes')">
+          <fa-icon [icon]="iconNotes"></fa-icon>
+        </button>
+        <button
+          type="button"
+          class="home-tab-mobile"
+          [class.active]="activeTab() === 'favorite'"
+          (click)="activeTab.set('favorite')">
+          <fa-icon [icon]="iconFavorites"></fa-icon>
+        </button>
+      </div>
+      <div class="home-tabs">
+        <button
+          type="button"
+          class="home-tab"
+          [class.active]="activeTab() === 'notes'"
+          (click)="activeTab.set('notes')">
+          Notas
+        </button>
+        <button
+          type="button"
+          class="home-tab"
+          [class.active]="activeTab() === 'favorite'"
+          (click)="activeTab.set('favorite')">
+          Favoritos
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="home-content" [class.view-list]="viewMode() === 'list'" [class.view-grid]="viewMode() === 'grid'">
+    @if (displayedNotes().length === 0) {
+      <div class="home-empty">
+        <p>Nenhuma nota encontrada</p>
+      </div>
+    } @else {
+      @for (note of displayedNotes(); track note.id) {
+        <app-note-card
+          [note]="note"
+          (toggleFavorite)="toggleFavorite($event)"
+          (shareNote)="shareNote($event)"
+          (toggleChecklistItem)="toggleChecklistItem($event.note, $event.item)">
+        </app-note-card>
+      }
+    }
+  </div>
+</div>

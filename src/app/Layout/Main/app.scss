@@ -9,3 +9,10 @@ main {
   padding: 20px;
   box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 0;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0));
+  }
+}
