@@ -7,6 +7,7 @@ import {
   faTag,
   faSquare,
   faSquareCheck,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { Note, NoteChecklistItem } from '../../../../Model/Note';
 
@@ -16,13 +17,17 @@ import { Note, NoteChecklistItem } from '../../../../Model/Note';
   templateUrl: './note-card.html',
   styleUrl: './note-card.scss',
 })
+
 export class NoteCard {
+
   @Input() note!: Note;
   @Output() toggleFavorite = new EventEmitter<Note>();
   @Output() shareNote = new EventEmitter<Note>();
   @Output() toggleChecklistItem = new EventEmitter<{ note: Note; item: NoteChecklistItem }>();
+  @Output() editNote = new EventEmitter<Note>();
 
   iconShare = faShareFromSquare;
+  iconEdit = faPencil;
   iconHeart = faHeart;
   iconTag = faTag;
   iconSquare = faSquare;
@@ -45,6 +50,10 @@ export class NoteCard {
 
   onShareNote(): void {
     this.shareNote.emit(this.note);
+  }
+
+  onEditNote(): void {
+    this.editNote.emit(this.note);
   }
 
   onToggleChecklistItem(item: NoteChecklistItem): void {
