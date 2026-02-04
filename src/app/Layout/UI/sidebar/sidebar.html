@@ -1,7 +1,34 @@
 <div class="sidebar">
-  <div class="sidebar-header">
-    <fa-icon [icon]="iconLogo" class="sidebar-logo"></fa-icon>
-    <h1 class="sidebar-title">NgNotes</h1>
+  <div class="sidebar-user-wrapper" #userPanelWrapper>
+    @if (userPanelOpen) {
+      <div class="sidebar-user-panel">
+        <button type="button" class="sidebar-menu-item" (click)="changeTheme()">
+          <fa-icon [icon]="iconMoon"></fa-icon>
+          <span>Modo Escuro</span>
+        </button>
+        <button type="button" class="sidebar-user-panel-item" (click)="editProfile()">
+          <fa-icon [icon]="iconUserPen"></fa-icon>
+          <span>Editar perfil</span>
+        </button>
+        <a routerLink="/settings" routerLinkActive="active" class="sidebar-menu-item">
+          <fa-icon [icon]="iconGear"></fa-icon>
+          <span>Configurações</span>
+        </a>
+        <button type="button" class="sidebar-user-panel-item sidebar-user-panel-item--logout" (click)="logout()">
+          <fa-icon [icon]="iconLogout"></fa-icon>
+          <span>Sair</span>
+        </button>
+      </div>
+    }
+    <button type="button" class="sidebar-user" (click)="toggleUserPanel()">
+      <div class="sidebar-user-avatar">
+        <fa-icon [icon]="iconUser"></fa-icon>
+      </div>
+      <div class="sidebar-user-info">
+        <span class="sidebar-user-name">{{ user.name }}</span>
+        <span class="sidebar-user-email">{{ user.email }}</span>
+      </div>
+    </button>
   </div>
   <div class="separator"></div>
   <div class="sidebar-content">
@@ -28,45 +55,19 @@
   <div class="separator"></div>
   <div class="sidebar-footer">
     <nav class="sidebar-menu">
-      <button type="button" class="sidebar-menu-item" (click)="changeTheme()">
+      <button type="button" class="sidebar-menu-item" routerLink="/tags" routerLinkActive="active">
         <fa-icon [icon]="iconTags"></fa-icon>
         <span>Tags</span>
       </button>
-      <button type="button" class="sidebar-menu-item">
+      <button type="button" class="sidebar-menu-item" routerLink="/shared" routerLinkActive="active">
         <fa-icon [icon]="iconShare"></fa-icon>
         <span>Compartilhadas</span>
       </button>
     </nav>
-    <div class="sidebar-user-wrapper" #userPanelWrapper>
-      @if (userPanelOpen) {
-        <div class="sidebar-user-panel">
-          <button type="button" class="sidebar-menu-item" (click)="changeTheme()">
-            <fa-icon [icon]="iconMoon"></fa-icon>
-            <span>Modo Escuro</span>
-          </button>
-          <button type="button" class="sidebar-user-panel-item" (click)="editProfile()">
-            <fa-icon [icon]="iconUserPen"></fa-icon>
-            <span>Editar perfil</span>
-          </button>
-          <button type="button" class="sidebar-menu-item">
-            <fa-icon [icon]="iconGear"></fa-icon>
-            <span>Configurações</span>
-          </button>
-          <button type="button" class="sidebar-user-panel-item sidebar-user-panel-item--logout" (click)="logout()">
-            <fa-icon [icon]="iconLogout"></fa-icon>
-            <span>Sair</span>
-          </button>
-        </div>
-      }
-      <button type="button" class="sidebar-user" (click)="toggleUserPanel()">
-        <div class="sidebar-user-avatar">
-          <fa-icon [icon]="iconUser"></fa-icon>
-        </div>
-        <div class="sidebar-user-info">
-          <span class="sidebar-user-name">{{ user.name }}</span>
-          <span class="sidebar-user-email">{{ user.email }}</span>
-        </div>
-      </button>
-    </div>
+    <div class="separator"></div>
+    <a routerLink="/" class="sidebar-header">
+      <fa-icon [icon]="iconLogo" class="sidebar-logo"></fa-icon>
+      <h1 class="sidebar-title">NgNotes</h1>
+    </a>
   </div>
 </div>

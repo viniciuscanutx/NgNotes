@@ -1,14 +1,9 @@
 import { Component, computed, signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faList,
-  faTableCells,
-  faMagnifyingGlass,
-  faNoteSticky,
-  faHeart,
-} from '@fortawesome/free-solid-svg-icons';
-import { Note, NoteChecklistItem } from '../../Model/Note';
 import { NoteCard } from '../../Layout/UI/Cards/note-card/note-card';
+import { faHeart, faList, faNoteSticky, faMagnifyingGlass, faTableCells, faCloudSun, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Note, NoteChecklistItem } from '../../Model/Note';
+
 
 @Component({
   selector: 'app-home',
@@ -18,11 +13,14 @@ import { NoteCard } from '../../Layout/UI/Cards/note-card/note-card';
 })
 
 export class Home {
+
   iconList = faList;
   iconGrid = faTableCells;
   iconSearch = faMagnifyingGlass;
   iconNotes = faNoteSticky;
   iconFavorites = faHeart;
+  iconSun = faCloudSun;
+  iconUser = faUser;
 
   activeTab = signal<'notes' | 'favorite'>('notes');
   viewMode = signal<'list' | 'grid'>('grid');
@@ -154,4 +152,5 @@ export class Home {
       })
     );
   }
+
 }

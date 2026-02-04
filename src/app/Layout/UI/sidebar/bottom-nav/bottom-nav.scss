@@ -73,20 +73,30 @@
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    transition: transform 0.25s ease, background-color 0.2s ease, box-shadow 0.25s ease;
     z-index: 1001;
 
     fa-icon {
       font-size: 1.5rem;
+      transition: transform 0.3s ease;
     }
 
     &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      transform: scale(1.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+      fa-icon {
+        transform: scale(1.2) rotate(90deg);
+      }
     }
 
     &:active {
       transform: scale(0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+      fa-icon {
+        transform: scale(1) rotate(90deg);
+      }
     }
   }
 }

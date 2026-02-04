@@ -2,17 +2,27 @@
   <header class="home-header">
     <div class="home-header-top">
       <div class="home-header-greeting">
-        <h1 class="home-greeting">{{ greeting }}, Usuário</h1>
+        <div class="home-greeting-row">
+          <span class="home-greeting-icon">
+            <fa-icon [icon]="iconSun"></fa-icon>
+          </span>
+          <h1 class="home-greeting">{{ greeting }}, Usuário</h1>
+        </div>
         <div class="home-date-wrapper">
           <span class="home-date">{{ formattedDate }}</span>
         </div>
       </div>
-      <div class="home-view-actions">
-        <button type="button" class="home-view-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')">
-          <fa-icon [icon]="iconList"></fa-icon>
-        </button>
-        <button type="button" class="home-view-btn" [class.active]="viewMode() === 'grid'" (click)="viewMode.set('grid')">
-          <fa-icon [icon]="iconGrid"></fa-icon>
+      <div class="home-header-right">
+        <div class="home-view-actions">
+          <button type="button" class="home-view-btn" [class.active]="viewMode() === 'list'" (click)="viewMode.set('list')">
+            <fa-icon [icon]="iconList"></fa-icon>
+          </button>
+          <button type="button" class="home-view-btn" [class.active]="viewMode() === 'grid'" (click)="viewMode.set('grid')">
+            <fa-icon [icon]="iconGrid"></fa-icon>
+          </button>
+        </div>
+        <button type="button" class="home-user-icon" aria-label="Usuário">
+          <fa-icon [icon]="iconUser"></fa-icon>
         </button>
       </div>
     </div>
