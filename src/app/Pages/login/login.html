@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center min-vh-100 gap-4">
+    
+    <div class="logo-container">
+        <app-logo size="large"></app-logo>
+    </div>
+
+    <div class="login-card">
+        <div class="card-header text-center">
+            <h2 class="welcome-title">Bem-vindo</h2>
+            <p class="welcome-subtitle">Faça login ou crie uma conta para continuar</p>
+        </div>
+
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Insira seu E-mail" [(ngModel)]="email" name="email" (blur)="togglePasswordVisibility(email)" (keyup.enter)="togglePasswordVisibility(email)">
+                </div>
+
+                    <div class="form-group" *ngIf="showPasswordInput">
+                        <input type="password" class="form-control" id="password" placeholder="Insira sua Senha" [(ngModel)]="password" name="password">
+                    <button type="button" class="btn btn-primary w-100 mt-4" (click)="login()">Entrar</button>
+                    </div>
+
+                <div class="divider">
+                    <span class="divider-text">Ou</span>
+                </div>
+
+                <div class="social-buttons">
+                    <button type="button" class="btn btn-social">
+                        <fa-icon [icon]="iconGithub"></fa-icon>
+                        Continue com GitHub
+                    </button>
+                    <button type="button" class="btn btn-social">
+                        <fa-icon [icon]="iconGoogle"></fa-icon>
+                        Continue com Google
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

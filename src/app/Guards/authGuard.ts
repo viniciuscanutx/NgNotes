@@ -14,3 +14,15 @@ export const authGuard: CanActivateFn = () => {
   
   return true;
 };
+
+export const redirectIfLoggedIn: CanActivateFn = () => {
+  const router = inject(Router);
+
+  const token = localStorage.getItem('authToken');
+
+  if (token) {
+    return router.parseUrl('/home');
+  }
+
+  return true;
+};

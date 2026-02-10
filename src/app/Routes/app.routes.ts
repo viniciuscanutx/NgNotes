@@ -2,13 +2,13 @@ import { Routes } from '@angular/router';
 import { Home } from '../Pages/home/home';
 import { Tags } from '../Pages/tags/tags';
 import { Settings } from '../Pages/settings/settings';
-import { Shared } from '../Pages/shared/shared';
 import { Login } from '../Pages/login/login';
 import { MainLayout } from '../Layout/Main-Layout/mainLayout';
-import { authGuard } from '../Guards/authGuard';
+import { authGuard, redirectIfLoggedIn } from '../Guards/authGuard';
+import { SharedCards } from '../Pages/shared-cards/shared-cards';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', component: Login },
+  { path: '', pathMatch: 'full', component: Login, canActivate: [redirectIfLoggedIn] },
   {
     path: '',
     component: MainLayout,
@@ -16,7 +16,7 @@ export const routes: Routes = [
     children: [
       { path: 'home', component: Home },
       { path: 'tags', component: Tags },
-      { path: 'shared', component: Shared },
+      { path: 'shared', component: SharedCards },
       { path: 'settings', component: Settings },
     ]
   }

@@ -1,0 +1,100 @@
+.dialog-modal {
+    background-color: #1A1B26;
+    width: 40vh;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #444444;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    .dialog-content {
+        margin-top: 40px;
+    }
+    
+    .dialog-content fa-icon {
+        font-size: 5rem;
+        color: #ffffff;
+    }
+
+    .dialog-content h2 {
+        font-size: 2rem;
+        color: #ffffff;
+        margin-top: 30px;
+    }
+
+    .dialog-content p {
+        font-size: 1rem;
+        color: #b8b8b8;
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .dialog-content-button .btn.btn-primary {
+        width: 100%;
+        max-width: 320px;
+        color: #1A1B26;
+        border-color: #1A1B26;
+        background: #ffffff;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        transition: all 0.2s;
+        cursor: pointer;
+        &:hover {
+            background-color: #e8e8e8;
+            transform: scaleX(1.03);
+        }
+        &:active {
+            transform: scaleX(0.98);
+        }
+        &:hover {
+            background-color: #e8e8e8;
+            transform: scaleX(1.03);
+        }
+        &:active {
+            transform: scaleX(0.98);
+        }
+    }
+
+    .dialog-content-button {
+        margin-top: 20px;
+        margin-bottom: 16px;
+    }
+
+    .dialog-content-button .btn-primary {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .dialog-content-button .btn-secondary {
+        width: 100%;    
+        max-width: 320px;
+        color: #ffffff;
+        background: #1A1B26;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        transition: all 0.2s;
+        cursor: pointer;
+        &:hover {
+            background-color: #252736;
+            transform: scaleX(1.03);
+        }
+        &:active {
+            transform: scaleX(0.98);
+        }
+    }
+
+    .dialog-content-button .separator-text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        color: #b8b8b8;
+    }
+
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #4b4e5f;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -22,11 +22,11 @@
     }
     <button type="button" class="sidebar-user" (click)="toggleUserPanel()">
       <div class="sidebar-user-avatar">
-        <fa-icon [icon]="iconUser"></fa-icon>
+        <img [src]="'https://ui-avatars.com/api/?name=' + (user?.name || '')" alt="Avatar" class="sidebar-user-avatar-image">
       </div>
       <div class="sidebar-user-info">
-        <span class="sidebar-user-name">{{ user.name }}</span>
-        <span class="sidebar-user-email">{{ user.email }}</span>
+        <span class="sidebar-user-name">{{ user?.name }}</span>
+        <span class="sidebar-user-email">{{ user?.email }}</span>
       </div>
     </button>
   </div>
@@ -65,7 +65,7 @@
       </button>
     </nav>
     <div class="separator"></div>
-    <a routerLink="/" class="sidebar-header">
+    <a routerLink="/home" class="sidebar-header">
       <fa-icon [icon]="iconLogo" class="sidebar-logo"></fa-icon>
       <h1 class="sidebar-title">NgNotes</h1>
     </a>

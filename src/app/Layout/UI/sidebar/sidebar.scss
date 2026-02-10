@@ -167,6 +167,14 @@
       font-size: 1rem;
       color: #ffffff;
     }
+    
+    .sidebar-user-avatar-image {
+      width: 110%;
+      height: 110%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
   }
 
   .sidebar-user-info {
@@ -174,6 +182,8 @@
     flex-direction: column;
     gap: 2px;
     min-width: 0;
+    margin-top: 3px;
+    margin-left: 4px;
   }
 
   .sidebar-user-name {

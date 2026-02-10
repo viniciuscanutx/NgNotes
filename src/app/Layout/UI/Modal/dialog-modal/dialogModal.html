@@ -1,0 +1,17 @@
+<div class="dialog-modal py-2">
+
+    <div class="dialog-content text-center">
+        <fa-icon [icon]="iconBan" class="sidebar-logo"></fa-icon>
+        <h2>{{ data.title }}</h2>
+        <p>{{ data.message }}</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="dialog-content-button text-center">
+        <button class="btn btn-primary mb-2" (click)="fechar()">Registrar</button>
+        <div class="separator-text"><p>Ou</p></div>
+        <button class="btn btn-secondary" (click)="fechar()">Tentar Novamente</button>
+    </div>
+
+</div>
