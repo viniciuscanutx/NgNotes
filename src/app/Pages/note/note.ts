@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../Services/note.service';
 import { NoteModel } from '../../Model/Note';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { AuthService } from '../../Services/auth.service';
 import { User } from '../../Model/User';
-import { faStar, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faGear, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { getTagColorClass } from '../../Utils/Utils';
 
 @Component({
   selector: 'app-note',
-  imports: [DatePipe, FontAwesomeModule],
+  imports: [DatePipe, FontAwesomeModule, NgClass],
   templateUrl: './note.html',
   styleUrl: './note.scss',
 })
@@ -22,6 +23,7 @@ export class Note implements OnInit {
 
   iconStar = faStar;
   iconGear = faGear;
+  iconTag = faTag;
 
   currentUser: User | null = null;
 
@@ -44,6 +46,10 @@ export class Note implements OnInit {
       const id = +params['id'];
       this.getNote(id);
     });
+  }
+
+  getTagColor(): string {
+    return this.noteData ? getTagColorClass(this.noteData.tag) : 'color-default';
   }
 
   getNote(id: number): void {

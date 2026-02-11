@@ -5,14 +5,14 @@ import { faHeart, faTag, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { NoteModel } from '../../../../Model/Note';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { processSnippet } from '../../../../Utils/Utils';
+import { processSnippet, getTagColorClass } from '../../../../Utils/Utils';
 
 @Component({
   selector: 'app-note-card',
   imports: [
-    FontAwesomeModule, 
-    DatePipe, 
-    RouterLink, 
+    FontAwesomeModule,
+    DatePipe,
+    RouterLink,
     RouterLinkActive],
   templateUrl: './note-card.html',
   styleUrl: './note-card.scss',
@@ -45,18 +45,11 @@ export class NoteCard {
   @Output() shareNote = new EventEmitter<NoteModel>();
   @Output() editNote = new EventEmitter<NoteModel>();
 
-  constructor(private sanitizer: DomSanitizer) {}
-  
+  constructor(private sanitizer: DomSanitizer) { }
+
   // Get Card Color Class
   getCardColorClass(): string {
-    const tagColors: Record<string, string> = {
-      'Design': 'color-design',
-      'Medicine': 'color-medicine',
-      'Sport': 'color-sport',
-      'Finance': 'color-finance',
-      'Work': 'color-work',
-    };
-    return tagColors[this.note.tag] || 'color-default';
+    return getTagColorClass(this.note.tag);
   }
 
   onToggleFavorite(): void {

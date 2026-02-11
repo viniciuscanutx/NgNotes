@@ -2,16 +2,14 @@
     @if (noteData) {
     <div class="note-card">
         <header class="card-header">
-            <div class="header-actions d-flex justify-content-end">
-                <div class="actions d-flex gap-2">
-                    <button class="icon-btn"><fa-icon [icon]="iconStar"></fa-icon></button>
-                    <button class="icon-btn"><fa-icon [icon]="iconGear"></fa-icon></button>
-                </div>
-            </div>
             <div class="header-top">
                 <div class="title-group">
                     <h1 class="note-title">{{ noteData.title }}</h1>
                     <div class="note-subtitle mb-2">{{ noteData?.subtitle }}</div>
+                </div>
+                <div class="actions">
+                    <button class="icon-btn"><fa-icon [icon]="iconStar"></fa-icon></button>
+                    <button class="icon-btn"><fa-icon [icon]="iconGear"></fa-icon></button>
                 </div>
             </div>
             <div class="editors">
@@ -22,7 +20,14 @@
             </div>
         </header>
         <div class="separator"></div>
-        <main class="card-body mt-4">
+        <div class="tag-section" [ngClass]="getTagColor()">
+            <span class="tag-label">Tags:</span>
+            <span class="tag-badge mt-1">
+                <fa-icon [icon]="iconTag"></fa-icon>
+                {{ noteData.tag }}
+            </span>
+        </div>
+        <main class="card-body mt-1">
             <section class="note-content">
                 <div class="note-markdown" [innerHTML]="renderedContent"></div>
             </section>
