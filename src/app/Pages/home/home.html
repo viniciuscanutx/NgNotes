@@ -82,8 +82,7 @@
         <app-note-card
           [note]="note"
           (toggleFavorite)="toggleFavorite($event)"
-          (shareNote)="shareNote($event)"
-          (toggleChecklistItem)="toggleChecklistItem($event.note, $event.item)">
+          (shareNote)="shareNote($event)">
         </app-note-card>
       }
     }
