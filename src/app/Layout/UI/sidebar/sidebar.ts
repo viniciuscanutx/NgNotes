@@ -4,10 +4,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser, faGear, faPlus, faNoteSticky, faChevronLeft, faFileLines, faMoon, faSun, faUserPen, faRightFromBracket, faShareFromSquare, faTags } from '@fortawesome/free-solid-svg-icons';
 import { Scrollbar } from './scrollbar/scrollbar';
-import { Note } from '../../../Model/Note';
+import { NoteModel } from '../../../Model/Note';
 import { User } from '../../../Model/User';
 import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
+import { NoteService } from '../../../Services/note.service';
+import { Signal } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -26,7 +28,8 @@ export class Sidebar {
 
   constructor(
     private authService: AuthService,
-    private router: Router) {
+    private router: Router,
+    private noteService: NoteService) {
       this.user = this.authService.getCurrentUser();
     }
 
@@ -57,12 +60,17 @@ export class Sidebar {
 
   user: User | null = null;
 
-  recentNotes = signal<Note[]>([
-    { id: 1, title: 'Reunião segunda-feira', type: 'text', date: new Date('2026-02-04T10:00:00'), tag: 'Work', favorited: false },
-  ]);
+  recentNotes = signal<NoteModel[]>([]);
+
+  getRecentNotes(): void {
+    this.noteService.getNotes().subscribe((notes) => {
+      this.recentNotes.set(notes);
+    });
+  }
 
   ngOnInit(): void {
     this.user = this.authService.getCurrentUser();
+    this.getRecentNotes();
   }
 
   changeTheme(): void {

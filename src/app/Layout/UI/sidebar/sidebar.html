@@ -32,7 +32,7 @@
   </div>
   <div class="separator"></div>
   <div class="sidebar-content">
-    <button class="btn btn-primary sidebar-button">
+    <button routerLink="/note/new" routerLinkActive="active" class="btn btn-primary sidebar-button">
       <fa-icon [icon]="iconPlus"></fa-icon>
     </button>
     <section class="sidebar-section">
@@ -40,7 +40,7 @@
       <app-scrollbar>
         <ul class="notes-list">
           @for (note of recentNotes(); track note.id) {
-            <li class="notes-list-item">
+            <li routerLink="/note/{{ note.id }}" routerLinkActive="active" class="notes-list-item">
               <fa-icon [icon]="iconFileLines" class="notes-list-icon"></fa-icon>
               <div class="notes-list-content">
                 <span class="notes-list-title">{{ note.title }}</span>

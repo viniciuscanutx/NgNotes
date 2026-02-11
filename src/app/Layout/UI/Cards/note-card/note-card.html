@@ -6,25 +6,16 @@
   <div class="separator"></div>
   <h3 class="note-card-title">{{ note.title }}</h3>
   <div class="note-card-body">
-    @if (note.type === 'checklist') {
-      <ul class="note-checklist">
-        @for (item of note.checklistItems; track item.id) {
-          <li class="note-checklist-item" [class.checked]="item.checked" (click)="onToggleChecklistItem(item)">
-            <fa-icon [icon]="item.checked ? iconSquareCheck : iconSquare" class="note-checklist-icon"></fa-icon>
-            <span>{{ item.text }}</span>
-          </li>
-        }
-      </ul>
-    } @else {
-      <p class="note-card-text">{{ note.content }}</p>
-    }
+    <div class="note-card-text">
+      <div [innerHTML]="renderedSnippet"></div>
+    </div>
   </div>
   <footer class="note-card-footer">
     <div class="note-card-meta">
       <span class="note-card-date">{{ note.date | date:'dd/MM/yyyy' }}</span>
     </div>
     <div class="note-card-actions">
-      <button type="button" class="note-card-action" (click)="onEditNote()">
+      <button routerLink="/note/{{ note.id }}" routerLinkActive="active" type="button" class="note-card-action" (click)="onEditNote()">
         <fa-icon [icon]="iconEdit"></fa-icon>
       </button>
       <button

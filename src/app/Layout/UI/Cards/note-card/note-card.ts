@@ -1,38 +1,53 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faShareFromSquare,
-  faHeart,
-  faTag,
-  faSquare,
-  faSquareCheck,
-  faPencil,
-} from '@fortawesome/free-solid-svg-icons';
-import { Note, NoteChecklistItem } from '../../../../Model/Note';
+import { faHeart, faTag, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { NoteModel } from '../../../../Model/Note';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { processSnippet } from '../../../../Utils/Utils';
 
 @Component({
   selector: 'app-note-card',
-  imports: [FontAwesomeModule, DatePipe],
+  imports: [
+    FontAwesomeModule, 
+    DatePipe, 
+    RouterLink, 
+    RouterLinkActive],
   templateUrl: './note-card.html',
   styleUrl: './note-card.scss',
 })
 
 export class NoteCard {
 
-  @Input() note!: Note;
-  @Output() toggleFavorite = new EventEmitter<Note>();
-  @Output() shareNote = new EventEmitter<Note>();
-  @Output() toggleChecklistItem = new EventEmitter<{ note: Note; item: NoteChecklistItem }>();
-  @Output() editNote = new EventEmitter<Note>();
-
-  iconShare = faShareFromSquare;
+  // Icons
   iconEdit = faPencil;
   iconHeart = faHeart;
   iconTag = faTag;
-  iconSquare = faSquare;
-  iconSquareCheck = faSquareCheck;
 
+  // Rendered Snippet
+  renderedSnippet: SafeHtml | null = null;
+
+  // Note
+  private _note!: NoteModel;
+
+  @Input() set note(value: NoteModel) {
+    this._note = value;
+    this.renderedSnippet = processSnippet(value, this.sanitizer);
+  }
+
+  get note(): NoteModel {
+    return this._note;
+  }
+
+  // Outputs
+  @Output() toggleFavorite = new EventEmitter<NoteModel>();
+  @Output() shareNote = new EventEmitter<NoteModel>();
+  @Output() editNote = new EventEmitter<NoteModel>();
+
+  constructor(private sanitizer: DomSanitizer) {}
+  
+  // Get Card Color Class
   getCardColorClass(): string {
     const tagColors: Record<string, string> = {
       'Design': 'color-design',
@@ -56,7 +71,4 @@ export class NoteCard {
     this.editNote.emit(this.note);
   }
 
-  onToggleChecklistItem(item: NoteChecklistItem): void {
-    this.toggleChecklistItem.emit({ note: this.note, item });
-  }
 }
