@@ -6,6 +6,7 @@ import { Login } from '../Pages/login/login';
 import { MainLayout } from '../Layout/Main-Layout/mainLayout';
 import { authGuard, redirectIfLoggedIn } from '../Guards/authGuard';
 import { SharedCards } from '../Pages/shared-cards/shared-cards';
+import { Note } from '../Pages/note/note';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', component: Login, canActivate: [redirectIfLoggedIn] },
@@ -18,6 +19,9 @@ export const routes: Routes = [
       { path: 'tags', component: Tags },
       { path: 'shared', component: SharedCards },
       { path: 'settings', component: Settings },
+      { path: 'note', component: Note },
+      { path: 'note/:id', component: Note },
+      { path: 'note/new', component: Note },
     ]
   }
 ];
