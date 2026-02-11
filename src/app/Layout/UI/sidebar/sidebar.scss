@@ -2,7 +2,7 @@
   margin: 6px;
   width: 27vh;
   height: 98.6vh;
-  background-color: #1A1B26;
+  background-color: var(--bg-surface);
   padding: 20px;
   border-radius: 10px;
   position: fixed;
@@ -21,8 +21,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: #ffffff;
-    background-color: #1A1B26;
+    color: var(--text-primary);
+    background-color: var(--bg-surface);
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.15s;
@@ -35,7 +35,7 @@
       margin-top: 10px;
       font-size: 1.4rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--text-primary);
     }
 
     .sidebar-logo {
@@ -43,8 +43,8 @@
       align-items: center;
       font-size: 1.4rem;
       line-height: 1;
-      color: #ffffff;
-      background-color: #1A1B26;
+      color: var(--text-primary);
+      background-color: var(--bg-surface);
     }
   }
 
@@ -61,8 +61,8 @@
     margin-top: 8px;
     padding: 6px;
     border-radius: 8px;
-    background-color: #252630;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background-color: var(--bg-elevated);
+    box-shadow: var(--shadow-panel);
     display: flex;
     flex-direction: column;
     z-index: 10;
@@ -76,7 +76,7 @@
     border: none;
     border-radius: 8px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-primary);
     font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.15s;
@@ -87,13 +87,13 @@
 
     fa-icon {
       font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--interactive-color);
       flex-shrink: 0;
     }
 
     &:hover,
     &.active {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: var(--interactive-bg-hover);
     }
   }
 
@@ -105,7 +105,7 @@
     border: none;
     border-radius: 6px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
     font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.15s;
@@ -115,20 +115,20 @@
 
     fa-icon {
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--interactive-color);
       flex-shrink: 0;
     }
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.08);
+      background-color: var(--interactive-bg-hover);
     }
 
     &--logout:hover {
-      background-color: rgba(220, 80, 80, 0.25);
-      color: #ff8a8a;
+      background-color: var(--logout-hover-bg);
+      color: var(--logout-hover-color);
 
       fa-icon {
-        color: #ff8a8a;
+        color: var(--logout-hover-color);
       }
     }
   }
@@ -139,7 +139,7 @@
     gap: 12px;
     padding: 12px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: var(--interactive-bg);
     border: none;
     cursor: pointer;
     width: 100%;
@@ -148,7 +148,7 @@
     transition: background-color 0.15s;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: var(--interactive-bg-hover);
     }
   }
 
@@ -157,7 +157,7 @@
     height: 36px;
     margin-left: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--bg-iconbackground);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,7 +165,7 @@
 
     fa-icon {
       font-size: 1rem;
-      color: #ffffff;
+      color: var(--avatar-text);
     }
 
     .sidebar-user-avatar-image {
@@ -189,7 +189,7 @@
   .sidebar-user-name {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--text-primary);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -197,7 +197,7 @@
 
   .sidebar-user-email {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -207,7 +207,7 @@
     width: calc(100% + 40px);
     margin: 10px -20px;
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--border-medium);
   }
 
   .sidebar-content {
@@ -217,7 +217,7 @@
     flex-direction: column;
     align-items: stretch;
     margin-top: 16px;
-    color: #ffffff;
+    color: var(--text-primary);
 
     .btn.btn-primary.sidebar-button {
       width: 100%;
@@ -225,9 +225,9 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: #1A1B26;
-      background-color: #ffffff;
-      border-color: #ffffff;
+      color: var(--btn-primary-text);
+      background-color: var(--btn-primary-bg);
+      border-color: var(--btn-primary-border);
       flex-shrink: 0;
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
 
@@ -236,7 +236,7 @@
       }
 
       &:hover {
-        background-color: #e8e8e8;
+        background-color: var(--btn-primary-hover);
         transform: scaleX(1.03);
 
         fa-icon {
@@ -261,7 +261,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--text-muted);
         margin: 0 0 10px 0;
         flex-shrink: 0;
       }
@@ -286,12 +286,12 @@
         transition: background-color 0.15s;
 
         &:hover {
-          background-color: rgba(255, 255, 255, 0.08);
+          background-color: var(--interactive-bg-hover);
         }
 
         .notes-list-icon {
           font-size: 0.9rem;
-          color: rgba(255, 255, 255, 0.6);
+          color: var(--interactive-color);
           flex-shrink: 0;
         }
 
@@ -304,7 +304,7 @@
 
         .notes-list-title {
           font-size: 0.9rem;
-          color: #ffffff;
+          color: var(--text-primary);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -312,7 +312,7 @@
 
         .notes-list-date {
           font-size: 0.7rem;
-          color: rgba(255, 255, 255, 0.45);
+          color: var(--text-tertiary);
         }
       }
     }
@@ -338,7 +338,7 @@
       border: none;
       border-radius: 8px;
       background: transparent;
-      color: rgba(255, 255, 255, 0.85);
+      color: var(--text-primary);
       font-size: 0.9rem;
       cursor: pointer;
       transition: background-color 0.15s;
@@ -349,13 +349,13 @@
 
       fa-icon {
         font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--interactive-color);
         flex-shrink: 0;
       }
 
       &:hover,
       &.active {
-        background-color: rgba(255, 255, 255, 0.08);
+        background-color: var(--interactive-bg-hover);
       }
 
       &.active {

@@ -1,28 +1,30 @@
 <div class="sidebar">
   <div class="sidebar-user-wrapper" #userPanelWrapper>
     @if (userPanelOpen) {
-      <div class="sidebar-user-panel">
-        <button type="button" class="sidebar-menu-item" (click)="changeTheme()">
-          <fa-icon [icon]="iconMoon"></fa-icon>
-          <span>Modo Escuro</span>
-        </button>
-        <button type="button" class="sidebar-user-panel-item" (click)="editProfile()">
-          <fa-icon [icon]="iconUserPen"></fa-icon>
-          <span>Editar perfil</span>
-        </button>
-        <a routerLink="/settings" routerLinkActive="active" class="sidebar-menu-item">
-          <fa-icon [icon]="iconGear"></fa-icon>
-          <span>Configurações</span>
-        </a>
-        <button type="button" class="sidebar-user-panel-item sidebar-user-panel-item--logout" (click)="logout()">
-          <fa-icon [icon]="iconLogout"></fa-icon>
-          <span>Sair</span>
-        </button>
-      </div>
+    <div class="sidebar-user-panel">
+      <button type="button" class="sidebar-menu-item" (click)="changeTheme()">
+        <fa-icon [icon]="themeService.isDark() ? iconSun : iconMoon"></fa-icon>
+        <span>{{ themeService.isDark() ? 'Modo Claro' : 'Modo Escuro' }}</span>
+      </button>
+      <button type="button" class="sidebar-user-panel-item" (click)="editProfile()">
+        <fa-icon [icon]="iconUserPen"></fa-icon>
+        <span>Editar perfil</span>
+      </button>
+      <a routerLink="/settings" routerLinkActive="active" class="sidebar-menu-item">
+        <fa-icon [icon]="iconGear"></fa-icon>
+        <span>Configurações</span>
+      </a>
+      <button type="button" class="sidebar-user-panel-item sidebar-user-panel-item--logout" (click)="logout()">
+        <fa-icon [icon]="iconLogout"></fa-icon>
+        <span>Sair</span>
+      </button>
+    </div>
     }
     <button type="button" class="sidebar-user" (click)="toggleUserPanel()">
       <div class="sidebar-user-avatar">
-        <img [src]="'https://ui-avatars.com/api/?name=' + (user?.name || '')" alt="Avatar" class="sidebar-user-avatar-image">
+        <img
+          [src]="'https://ui-avatars.com/api/?name=' + (user?.name || '') + '&background=' + (themeService.isDark() ? 'DDDDDD' : '1A1B26') + '&color=' + (themeService.isDark() ? '1A1B26' : 'ffffff')"
+          alt="Avatar" class="sidebar-user-avatar-image">
       </div>
       <div class="sidebar-user-info">
         <span class="sidebar-user-name">{{ user?.name }}</span>
@@ -40,13 +42,13 @@
       <app-scrollbar>
         <ul class="notes-list">
           @for (note of recentNotes(); track note.id) {
-            <li routerLink="/note/{{ note.id }}" routerLinkActive="active" class="notes-list-item">
-              <fa-icon [icon]="iconFileLines" class="notes-list-icon"></fa-icon>
-              <div class="notes-list-content">
-                <span class="notes-list-title">{{ note.title }}</span>
-                <span class="notes-list-date">{{ note.date | date:'dd/MM/yyyy' }}</span>
-              </div>
-            </li>
+          <li routerLink="/note/{{ note.id }}" routerLinkActive="active" class="notes-list-item">
+            <fa-icon [icon]="iconFileLines" class="notes-list-icon"></fa-icon>
+            <div class="notes-list-content">
+              <span class="notes-list-title">{{ note.title }}</span>
+              <span class="notes-list-date">{{ note.date | date:'dd/MM/yyyy' }}</span>
+            </div>
+          </li>
           }
         </ul>
       </app-scrollbar>

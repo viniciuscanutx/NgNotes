@@ -9,6 +9,7 @@ import { User } from '../../../Model/User';
 import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
 import { NoteService } from '../../../Services/note.service';
+import { ThemeService } from '../../../Services/theme.service';
 import { Signal } from '@angular/core';
 
 @Component({
@@ -29,9 +30,10 @@ export class Sidebar {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private noteService: NoteService) {
-      this.user = this.authService.getCurrentUser();
-    }
+    private noteService: NoteService,
+    public themeService: ThemeService) {
+    this.user = this.authService.getCurrentUser();
+  }
 
   iconUser = faUser;
   iconGear = faGear;
@@ -74,14 +76,14 @@ export class Sidebar {
   }
 
   changeTheme(): void {
-    document.body.classList.toggle('dark-mode');
+    this.themeService.toggleTheme();
   }
 
   toggleUserPanel(): void {
     this.userPanelOpen = !this.userPanelOpen;
   }
 
-  editProfile(): void {}
+  editProfile(): void { }
 
   logout(): void {
     this.authService.logout();

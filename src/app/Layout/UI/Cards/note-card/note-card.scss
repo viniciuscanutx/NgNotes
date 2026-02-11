@@ -1,5 +1,5 @@
 .note-card {
-  background-color: #1A1B26;
+  background-color: var(--bg-surface);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -7,12 +7,12 @@
   gap: 16px;
   height: 100%;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.15);
-    background-color: #14141d;
+    box-shadow: var(--shadow-card-hover);
+    background-color: var(--bg-surface-hover);
   }
 
   .note-card-tag {
@@ -23,7 +23,7 @@
 .note-card-title {
   font-size: 1.15rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.3;
   display: -webkit-box;
@@ -40,7 +40,7 @@
 
 .note-card-text {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
   display: -webkit-box;
@@ -61,23 +61,23 @@
   align-items: center;
   gap: 12px;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-secondary);
   padding: 6px 0;
   cursor: pointer;
   transition: color 0.2s;
 
   &:hover {
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--text-primary);
   }
 
   &.checked {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     text-decoration: line-through;
   }
 
   .note-checklist-icon {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     flex-shrink: 0;
     transition: color 0.2s;
   }
@@ -93,7 +93,7 @@
   justify-content: space-between;
   gap: 12px;
   padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--separator-color);
 }
 
 .note-card-meta {
@@ -106,7 +106,7 @@
 
 .note-card-date {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
 }
 
 .note-card-tag {
@@ -133,8 +133,8 @@
   height: 36px;
   border: none;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.6);
+  background: var(--interactive-bg);
+  color: var(--interactive-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -146,8 +146,8 @@
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.95);
+    background: var(--interactive-bg-active);
+    color: var(--text-primary);
     transform: scale(1.05);
   }
 
@@ -164,6 +164,6 @@
 .separator {
   width: 100%;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: var(--separator-color);
   margin-bottom: 8px;
 }

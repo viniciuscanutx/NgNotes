@@ -4,13 +4,13 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: #ffffff;
+    color: var(--text-primary);
 
     .sidebar-title {
         margin-top: 10px;
         font-size: 1.4rem;
         font-weight: 600;
-        color: #ffffff;
+        color: var(--text-primary);
     }
 
     .sidebar-logo {
@@ -18,7 +18,7 @@
         align-items: center;
         font-size: 1.4rem;
         line-height: 1;
-        color: #ffffff;
+        color: var(--text-primary);
     }
 
     &[data-size="small"] {

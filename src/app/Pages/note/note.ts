@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../Services/note.service';
 import { NoteModel } from '../../Model/Note';
-import { DatePipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
@@ -14,7 +14,7 @@ import { getTagColorClass } from '../../Utils/Utils';
 
 @Component({
   selector: 'app-note',
-  imports: [DatePipe, FontAwesomeModule, NgClass],
+  imports: [FontAwesomeModule, NgClass],
   templateUrl: './note.html',
   styleUrl: './note.scss',
 })

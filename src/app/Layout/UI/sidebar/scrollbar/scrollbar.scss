@@ -16,21 +16,21 @@
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-  
+
     &::-webkit-scrollbar {
       display: none;
     }
   }
-  
+
   .scrollbar-track {
     position: relative;
     width: 6px;
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: var(--scrollbar-track);
   }
-  
+
   .scrollbar-thumb {
     position: absolute;
     left: 0;
@@ -39,19 +39,17 @@
     width: 6px;
     min-height: 20px;
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--scrollbar-thumb);
     cursor: grab;
     transition: background-color 0.15s;
-  
+
     &:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: var(--scrollbar-thumb-hover);
     }
-  
+
     &:active {
       cursor: grabbing;
     }
   }
 
 }
-
-

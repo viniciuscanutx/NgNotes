@@ -1,29 +1,29 @@
 .dialog-modal {
-    background-color: #1A1B26;
+    background-color: var(--bg-surface);
     width: 40vh;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid #444444;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-modal);
+    box-shadow: var(--shadow-modal);
 
     .dialog-content {
         margin-top: 40px;
     }
-    
+
     .dialog-content fa-icon {
         font-size: 5rem;
-        color: #ffffff;
+        color: var(--text-primary);
     }
 
     .dialog-content h2 {
         font-size: 2rem;
-        color: #ffffff;
+        color: var(--text-primary);
         margin-top: 30px;
     }
 
     .dialog-content p {
         font-size: 1rem;
-        color: #b8b8b8;
+        color: var(--dialog-text-secondary);
         margin-top: 10px;
         margin-bottom: 30px;
     }
@@ -31,24 +31,19 @@
     .dialog-content-button .btn.btn-primary {
         width: 100%;
         max-width: 320px;
-        color: #1A1B26;
-        border-color: #1A1B26;
-        background: #ffffff;
+        color: var(--btn-primary-text);
+        border-color: var(--btn-primary-border);
+        background: var(--btn-primary-bg);
         border-radius: 10px;
-        border: 1px solid #ffffff;
+        border: 1px solid var(--btn-primary-border);
         transition: all 0.2s;
         cursor: pointer;
+
         &:hover {
-            background-color: #e8e8e8;
+            background-color: var(--btn-primary-hover);
             transform: scaleX(1.03);
         }
-        &:active {
-            transform: scaleX(0.98);
-        }
-        &:hover {
-            background-color: #e8e8e8;
-            transform: scaleX(1.03);
-        }
+
         &:active {
             transform: scaleX(0.98);
         }
@@ -65,18 +60,20 @@
     }
 
     .dialog-content-button .btn-secondary {
-        width: 100%;    
+        width: 100%;
         max-width: 320px;
-        color: #ffffff;
-        background: #1A1B26;
+        color: var(--btn-secondary-text);
+        background: var(--btn-secondary-bg);
         border-radius: 10px;
-        border: 1px solid #ffffff;
+        border: 1px solid var(--btn-secondary-border);
         transition: all 0.2s;
         cursor: pointer;
+
         &:hover {
-            background-color: #252736;
+            background-color: var(--btn-secondary-hover);
             transform: scaleX(1.03);
         }
+
         &:active {
             transform: scaleX(0.98);
         }
@@ -86,7 +83,7 @@
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 0.8rem;
-        color: #b8b8b8;
+        color: var(--dialog-text-secondary);
     }
 
 }
@@ -94,7 +91,7 @@
 .separator {
     width: 100%;
     height: 1px;
-    background-color: #4b4e5f;
+    background-color: var(--modal-separator);
     margin-top: 20px;
     margin-bottom: 20px;
 }
