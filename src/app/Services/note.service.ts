@@ -24,4 +24,20 @@ export class NoteService {
         return of(foundNote || null);
     }
 
+    addNote(note: NoteModel): Observable<NoteModel> {
+        const newId = this.data.length > 0 ? Math.max(...this.data.map(n => n.id)) + 1 : 1;
+        const newNote = { ...note, id: newId };
+        this.data.push(newNote);
+        return of(newNote);
+    }
+
+    updateNote(note: NoteModel): Observable<NoteModel | null> {
+        const index = this.data.findIndex(n => n.id === note.id);
+        if (index !== -1) {
+            this.data[index] = note;
+            return of(note);
+        }
+        return of(null);
+    }
+
 }

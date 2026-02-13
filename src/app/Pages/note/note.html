@@ -1,41 +1,67 @@
 <div class="note-page">
-    @if (noteData) {
-    <div class="note-card">
+    <form [formGroup]="noteForm" class="note-card">
         <header class="card-header">
             <div class="header-top">
                 <div class="title-group">
-                    <h1 class="note-title">{{ noteData.title }}</h1>
-                    <div class="note-subtitle mb-2">{{ noteData.subtitle }}</div>
+                    <input type="text" formControlName="title" class="note-title-input" placeholder="Título da Nota">
+                    <input type="text" formControlName="subtitle" class="note-subtitle-input" placeholder="Subtítulo (opcional)">
                 </div>
                 <div class="actions">
-                    <button class="icon-btn"><fa-icon [icon]="iconStar"></fa-icon></button>
-                    <button class="icon-btn"><fa-icon [icon]="iconGear"></fa-icon></button>
+                    <span class="save-status">{{ saveStatus }}</span>
+                    <button type="button" class="icon-btn" (click)="togglePreview()" title="Alternar Visualização">
+                        <fa-icon [icon]="isPreviewMode ? iconEyeSlash : iconEye"></fa-icon>
+                    </button>
+                    <button type="button" class="icon-btn" (click)="toggleFavorite()" [class.favorited]="noteData?.favorited" title="Favoritar">
+                        <fa-icon [icon]="iconStar"></fa-icon>
+                    </button>
+                    <button type="button" class="icon-btn" title="Configurações">
+                         <fa-icon [icon]="iconGear"></fa-icon>
+                    </button>
                 </div>
             </div>
-            <div class="editors">
+            <div class="editors mt-4">
                 <div class="avatars">
-                    <div class="avatar">{{ currentUser!.name.charAt(0) }}</div>
+                    <div class="avatar">{{ currentUser?.name?.charAt(0) || 'U' }}</div>
                 </div>
-                <button class="add-editor ml-auto">{{ currentUser!.name }}</button>
+                <button type="button" class="add-editor ml-auto">{{ currentUser?.name || 'Usuário' }}</button>
             </div>
         </header>
         <div class="separator"></div>
+        
         <div class="tag-section" [ngClass]="getTagColor()">
             <span class="tag-label">Tags:</span>
-            <span class="tag-badge mt-1">
+            <div class="tag-badge mt-1">
                 <fa-icon [icon]="iconTag"></fa-icon>
-                {{ noteData.tag }}
-            </span>
+                <input type="text" formControlName="tag" class="tag-input" placeholder="Tag">
+            </div>
         </div>
+
         <main class="card-body mt-1">
+            @if (!isPreviewMode) {
+            <div class="toolbar">
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('bold')" title="Negrito"><fa-icon [icon]="iconBold"></fa-icon></button>
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('italic')" title="Itálico"><fa-icon [icon]="iconItalic"></fa-icon></button>
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('heading')" title="Título"><fa-icon [icon]="iconHeading"></fa-icon></button>
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('list')" title="Lista"><fa-icon [icon]="iconList"></fa-icon></button>
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('quote')" title="Citação"><fa-icon [icon]="iconQuote"></fa-icon></button>
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('code')" title="Código"><fa-icon [icon]="iconCode"></fa-icon></button>
+                <button type="button" class="toolbar-btn" (click)="insertMarkdown('link')" title="Link"><fa-icon [icon]="iconLink"></fa-icon></button>
+            </div>
+            }
+
             <section class="note-content">
+                @if (!isPreviewMode) {
+                <textarea 
+                    #noteContent
+                    formControlName="content" 
+                    class="note-content-editor" 
+                    placeholder="Escreva sua nota aqui... Use Markdown."
+                    (input)="adjustTextareaHeight($event)"
+                ></textarea>
+                } @else {
                 <div class="note-markdown" [innerHTML]="renderedContent"></div>
+                }
             </section>
         </main>
-    </div>
-    } @else {
-    <div class="note-not-found">
-        <p>Nenhuma nota encontrada</p>
-    </div>
-    }
+    </form>
 </div>
