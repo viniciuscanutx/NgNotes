@@ -1,59 +1,77 @@
 # NgNotes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+NgNotes é um projeto de aplicação web desenvolvido com foco em simplicidade e com poucas distrações para usuários que buscam simplicidade e facilidade no dia a dia.
 
-## Development server
+O projeto está em fase de desenvolvimento e tende a ser aprimorado com o tempo.
 
-To start a local development server, run:
+## Proposta
+
+A proposta é criar uma aplicação web que permita aos usuários organizar suas notas de uma forma menos poluída e funcional.
+
+## Requisitos
+
+- Node.js 18.x ou superior
+- npm 9.x ou superior
+
+Esse projeto usa [Angular CLI](https://github.com/angular/angular-cli) versão 20.3.10.
+
+## Tecnologias
+
+- Angular 20.3.10
+- Font Awesome Icons
+- Bootstrap
+- TypeScript
+- SCSS
+
+## Features do Projeto
+
+- Login
+- Cadastro
+- Logout
+- Listagem de notas
+- Criação de notas
+- Edição de notas
+- Exclusão de notas
+- Busca de notas
+- Filtro de notas
+- Ordenação de notas
+- Responsividade
+
+## Status do Projeto
+
+- [x] Login
+- [x] Cadastro
+- [x] Logout
+- [ ] Listagem de notas
+- [ ] Criação de notas
+- [ ] Edição de notas
+- [ ] Exclusão de notas
+- [x] Busca de notas
+- [x] Filtro de notas
+- [x] Ordenação de notas
+- [x] Responsividade
+
+## Futuras Integrações do Projeto
+
+- Integração com o Discord para enviar lembretes sobre as notas em um lugar mais acessado por usuários
+- Timer integrado para pomodoro e outros métodos que possam ajudar em estudos
+- Integração com o Google Agenda para sincronizar eventos
+- Aplicativo Mobile (WebView)
+
+## Seja um Colaborador!
+
+Se você tem interesse em contribuir com o projeto, sinta-se à vontade para enviar um Pull Request. Ficarei feliz em analisar e, se possível, mergear suas alterações.
+
+## Servidor de Desenvolvimento
+
+Para iniciar o servidor de desenvolvimento local, rode:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Uma vez que o servidor esteja rodando, abra o navegador e navegue até `http://localhost:4200/`. A aplicação irá recarregar automaticamente sempre que você modificar qualquer arquivo fonte.
 
 ## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Para mais informações sobre o projeto, entre em contato comigo através do email listado no Github.
