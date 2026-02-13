@@ -72,6 +72,6 @@ ng serve
 
 Uma vez que o servidor esteja rodando, abra o navegador e navegue até `http://localhost:4200/`. A aplicação irá recarregar automaticamente sempre que você modificar qualquer arquivo fonte.
 
-## Additional Resources
+## Informações Adicionais
 
 Para mais informações sobre o projeto, entre em contato comigo através do email listado no Github.
