@@ -1,12 +1,19 @@
 import { Component, computed, signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NoteCard } from '../../Layout/UI/Cards/note-card/note-card';
-import { faHeart, faList, faNoteSticky, faMagnifyingGlass, faTableCells, faCloudSun, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart,
+  faList,
+  faNoteSticky,
+  faMagnifyingGlass,
+  faTableCells,
+  faCloudSun,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { NoteModel } from '../../Model/Note';
 import { User } from '../../Model/User';
 import { AuthService } from '../../Services/auth.service';
 import { NoteService } from '../../Services/note.service';
-
 
 @Component({
   selector: 'app-home',
@@ -14,11 +21,11 @@ import { NoteService } from '../../Services/note.service';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-
 export class Home {
-
-  constructor(private authService: AuthService, 
-    private noteService: NoteService) {}
+  constructor(
+    private authService: AuthService,
+    private noteService: NoteService,
+  ) {}
 
   iconList = faList;
   iconGrid = faTableCells;
@@ -41,7 +48,7 @@ export class Home {
       this.notes = notes;
     });
   }
-  
+
   ngOnInit(): void {
     this.user = this.authService.getCurrentUser();
     this.getNotes();
@@ -61,11 +68,14 @@ export class Home {
         (n) =>
           n.title.toLowerCase().includes(search) ||
           n.content?.toLowerCase().includes(search) ||
-          n.tag.toLowerCase().includes(search)
+          n.tag.toLowerCase().includes(search),
       );
     }
 
-    return filteredNotes.sort((a: NoteModel, b: NoteModel) => new Date(b.date as Date).getTime() - new Date(a.date as Date).getTime());
+    return filteredNotes.sort(
+      (a: NoteModel, b: NoteModel) =>
+        new Date(b.date as Date).getTime() - new Date(a.date as Date).getTime(),
+    );
   });
 
   greeting = this.getGreeting();
@@ -88,9 +98,15 @@ export class Home {
   }
 
   toggleFavorite(note: NoteModel): void {
-    this.notes = this.notes.map((n: NoteModel) => (n.id === note.id ? { ...n, favorited: !n.favorited } : n));
+    this.notes = this.notes.map((n: NoteModel) =>
+      n.id === note.id
+        ? {
+            ...n,
+            favorited: !n.favorited,
+          }
+        : n,
+    );
   }
 
   shareNote(note: NoteModel): void {}
-
 }

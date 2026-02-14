@@ -2,7 +2,21 @@ import { Component, HostListener, ViewChild, ElementRef, signal } from '@angular
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faGear, faPlus, faNoteSticky, faChevronLeft, faFileLines, faMoon, faSun, faUserPen, faRightFromBracket, faShareFromSquare, faTags, faHouse } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser,
+  faGear,
+  faPlus,
+  faNoteSticky,
+  faChevronLeft,
+  faFileLines,
+  faMoon,
+  faSun,
+  faUserPen,
+  faRightFromBracket,
+  faShareFromSquare,
+  faTags,
+  faHouse,
+} from '@fortawesome/free-solid-svg-icons';
 import { Scrollbar } from './scrollbar/scrollbar';
 import { NoteModel } from '../../../Model/Note';
 import { User } from '../../../Model/User';
@@ -14,24 +28,17 @@ import { Signal } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [
-    FontAwesomeModule,
-    Scrollbar,
-    DatePipe,
-    RouterLink,
-    RouterLinkActive,
-  ],
+  imports: [FontAwesomeModule, Scrollbar, DatePipe, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
-
 export class Sidebar {
-
   constructor(
     private authService: AuthService,
     private router: Router,
     private noteService: NoteService,
-    public themeService: ThemeService) {
+    public themeService: ThemeService,
+  ) {
     this.user = this.authService.getCurrentUser();
   }
 
@@ -50,7 +57,6 @@ export class Sidebar {
   iconNote = faNoteSticky;
   userPanelOpen = false;
   iconHome = faHouse;
-
 
   @ViewChild('userPanelWrapper') userPanelWrapper!: ElementRef<HTMLElement>;
 
@@ -84,11 +90,10 @@ export class Sidebar {
     this.userPanelOpen = !this.userPanelOpen;
   }
 
-  editProfile(): void { }
+  editProfile(): void {}
 
   logout(): void {
     this.authService.logout();
     this.router.navigate(['']);
   }
-
 }
