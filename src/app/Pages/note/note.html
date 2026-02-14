@@ -9,10 +9,10 @@
                 <div class="actions">
                     <span class="save-status">{{ saveStatus }}</span>
                     <button type="button" class="icon-btn" (click)="togglePreview()" title="Alternar Visualização">
-                        <fa-icon [icon]="isPreviewMode ? iconEyeSlash : iconEye"></fa-icon>
+                        <fa-icon [icon]="isPreviewMode ? iconPen : iconEye"></fa-icon>
                     </button>
                     <button type="button" class="icon-btn" (click)="toggleFavorite()" [class.favorited]="noteData?.favorited" title="Favoritar">
-                        <fa-icon [icon]="iconStar"></fa-icon>
+                        <fa-icon [icon]="iconHeart"></fa-icon>
                     </button>
                     <button type="button" class="icon-btn" title="Configurações">
                          <fa-icon [icon]="iconGear"></fa-icon>

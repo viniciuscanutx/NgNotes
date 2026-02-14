@@ -32,7 +32,7 @@
       </div>
     </button>
   </div>
-  <div class="separator"></div>
+  <div class="separator mb-1 mt-4"></div>
   <div class="sidebar-content">
     <button routerLink="/note/new" routerLinkActive="active" class="btn btn-primary sidebar-button">
       <fa-icon [icon]="iconPlus"></fa-icon>
@@ -42,7 +42,7 @@
       <app-scrollbar>
         <ul class="notes-list">
           @for (note of recentNotes(); track note.id) {
-          <li routerLink="/note/{{ note.id }}" routerLinkActive="active" class="notes-list-item">
+          <li routerLink="/note/view/{{ note.id }}" routerLinkActive="active" class="notes-list-item">
             <fa-icon [icon]="iconFileLines" class="notes-list-icon"></fa-icon>
             <div class="notes-list-content">
               <span class="notes-list-title">{{ note.title }}</span>
@@ -57,6 +57,10 @@
   <div class="separator"></div>
   <div class="sidebar-footer">
     <nav class="sidebar-menu">
+      <button type="button" class="sidebar-menu-item" routerLink="/home" routerLinkActive="active">
+        <fa-icon [icon]="iconHome"></fa-icon>
+        <span>Home</span>
+      </button>
       <button type="button" class="sidebar-menu-item" routerLink="/tags" routerLinkActive="active">
         <fa-icon [icon]="iconTags"></fa-icon>
         <span>Tags</span>

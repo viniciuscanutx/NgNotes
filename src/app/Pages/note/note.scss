@@ -104,10 +104,10 @@
     }
         
     &.favorited {
-        color: var(--warning); 
+        color: #EF4444; 
         
          fa-icon {
-            filter: drop-shadow(0 0 2px rgba(255, 193, 7, 0.4));
+            filter: drop-shadow(0 0 2px rgba(239, 68, 68, 0.4));
          }
     }
   }
@@ -330,4 +330,12 @@
          margin: 1em 0;
      }
   }
+}
+
+.noteData.favorited {
+    color: var(--warning); 
+    
+     fa-icon {
+        filter: drop-shadow(0 0 2px rgba(255, 193, 7, 0.4));
+     }
 }

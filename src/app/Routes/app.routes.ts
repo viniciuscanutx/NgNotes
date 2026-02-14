@@ -20,7 +20,7 @@ export const routes: Routes = [
       { path: 'shared', component: SharedCards },
       { path: 'settings', component: Settings },
       { path: 'note', component: Note },
-      { path: 'note/:id', component: Note },
+      { path: 'note/view/:id', component: Note},
       { path: 'note/new', component: Note },
     ]
   }

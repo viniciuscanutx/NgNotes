@@ -8,7 +8,7 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { AuthService } from '../../Services/auth.service';
 import { User } from '../../Model/User';
-import { faStar, faGear, faTag, faSave, faArrowLeft, faBold, faItalic, faListUl, faLink, faHeading, faQuoteRight, faCode, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faGear, faTag, faSave, faArrowLeft, faBold, faItalic, faListUl, faLink, faHeading, faQuoteRight, faCode, faEye, faEyeSlash, faPen, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { getTagColorClass } from '../../Utils/Utils';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -36,12 +36,13 @@ export class Note implements OnInit {
   iconQuote = faQuoteRight;
   iconCode = faCode;
   iconEye = faEye;
-  iconEyeSlash = faEyeSlash;
+  iconPen = faPen;
+  iconHeart = faHeart;
 
   @ViewChild('noteContent') textareaRef!: ElementRef<HTMLTextAreaElement>;
   
   // Save status indicator
-  saveStatus: 'Saved' | 'Saving...' | 'Error' = 'Saved';
+  saveStatus: 'Salvo' | 'Salvando...' | 'Erro ao salvar' = 'Salvo';
 
   currentUser: User | null = null;
   noteForm: FormGroup;
@@ -69,6 +70,9 @@ export class Note implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
+
+    this.viewMode();
+
     this.route.params.subscribe(params => {
         const idParam = params['id'];
         if (idParam) {
@@ -82,6 +86,13 @@ export class Note implements OnInit {
 
     this.setupAutoSave();
   }
+
+  viewMode(): void {
+    if (this.router.url.includes('/view/')) {
+      this.isPreviewMode = true;
+    }
+  }
+
 
   setupAutoSave(): void {
     this.noteForm.valueChanges.pipe(
@@ -127,7 +138,7 @@ export class Note implements OnInit {
 
   saveNote(): void {
     if (this.noteForm.valid && this.currentUser) {
-        this.saveStatus = 'Saving...';
+        this.saveStatus = 'Salvando...';
         const formValue = this.noteForm.value;
         const noteToSave: NoteModel = {
             id: this.isEditMode && this.noteData ? this.noteData.id : 0, 
@@ -146,14 +157,14 @@ export class Note implements OnInit {
 
         saveObservable.subscribe({
             next: (savedNote) => {
-                this.saveStatus = 'Saved';
+                this.saveStatus = 'Salvo';
                 if (!this.isEditMode && savedNote) {
                     this.isEditMode = true;
                     this.noteData = savedNote;
                 }
             },
             error: () => {
-                this.saveStatus = 'Error';
+                this.saveStatus = 'Erro ao salvar';
             }
         });
     }

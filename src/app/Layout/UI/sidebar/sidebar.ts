@@ -2,7 +2,7 @@ import { Component, HostListener, ViewChild, ElementRef, signal } from '@angular
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faGear, faPlus, faNoteSticky, faChevronLeft, faFileLines, faMoon, faSun, faUserPen, faRightFromBracket, faShareFromSquare, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faGear, faPlus, faNoteSticky, faChevronLeft, faFileLines, faMoon, faSun, faUserPen, faRightFromBracket, faShareFromSquare, faTags, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { Scrollbar } from './scrollbar/scrollbar';
 import { NoteModel } from '../../../Model/Note';
 import { User } from '../../../Model/User';
@@ -49,6 +49,7 @@ export class Sidebar {
   iconShare = faShareFromSquare;
   iconNote = faNoteSticky;
   userPanelOpen = false;
+  iconHome = faHouse;
 
 
   @ViewChild('userPanelWrapper') userPanelWrapper!: ElementRef<HTMLElement>;

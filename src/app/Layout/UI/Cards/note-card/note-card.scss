@@ -33,6 +33,18 @@
   overflow: hidden;
 }
 
+.note-card-subtitle {
+  font-size: 0.8rem;
+  color: #737880;
+  margin-top: -12px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .note-card-body {
   flex: 1;
   min-height: 0;
@@ -40,7 +52,7 @@
 
 .note-card-text {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.6;
   margin: 0;
   display: -webkit-box;
@@ -48,6 +60,32 @@
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  ::ng-deep {
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 1em;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      line-height: 1.4;
+    }
+
+    p {
+      margin: 0 0 8px 0;
+    }
+
+    ul, ol {
+      margin: 0 0 8px 0;
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+    
+    img {
+        display: none; // Hide images in preview to keep it clean? Usually images break layout in cards
+    }
+  }
 }
 
 .note-checklist {

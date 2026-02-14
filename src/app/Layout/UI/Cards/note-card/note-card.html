@@ -5,6 +5,7 @@
   </span>
   <div class="separator"></div>
   <h3 class="note-card-title">{{ note.title }}</h3>
+  <h5 class="note-card-subtitle">{{ note.subtitle }}</h5>
   <div class="note-card-body">
     <div class="note-card-text">
       <div [innerHTML]="renderedSnippet"></div>
@@ -15,8 +16,8 @@
       <span class="note-card-date">{{ note.date | date:'dd/MM/yyyy' }}</span>
     </div>
     <div class="note-card-actions">
-      <button routerLink="/note/{{ note.id }}" routerLinkActive="active" type="button" class="note-card-action" (click)="onEditNote()">
-        <fa-icon [icon]="iconEdit"></fa-icon>
+      <button routerLink="/note/view/{{ note.id }}" routerLinkActive="active" type="button" class="note-card-action" (click)="onEditNote()">
+        <fa-icon [icon]="iconEye"></fa-icon>
       </button>
       <button
         type="button"

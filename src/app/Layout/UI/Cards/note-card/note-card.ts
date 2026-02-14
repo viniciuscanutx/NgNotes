@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHeart, faTag, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faTag, faPencil, faEye } from '@fortawesome/free-solid-svg-icons';
 import { NoteModel } from '../../../../Model/Note';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -24,6 +24,7 @@ export class NoteCard {
   iconEdit = faPencil;
   iconHeart = faHeart;
   iconTag = faTag;
+  iconEye = faEye;
 
   // Rendered Snippet
   renderedSnippet: SafeHtml | null = null;

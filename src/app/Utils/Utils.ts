@@ -9,15 +9,7 @@ export function processSnippet(note: NoteModel, sanitizer: DomSanitizer): SafeHt
   }
   const raw = marked.parse(note.content);
   const clean = (DOMPurify as any).sanitize(raw);
-  const temp = document.createElement('div');
-  temp.innerHTML = clean as string;
-  let text = temp.textContent || temp.innerText || '';
-  const max = 140;
-  if (text.length > max) {
-    text = text.slice(0, max).trim() + '...';
-  }
-  const escaped = escapeHtml(text);
-  return sanitizer.bypassSecurityTrustHtml(`<p>${escaped}</p>`);
+  return sanitizer.bypassSecurityTrustHtml(clean as string);
 }
 
 function escapeHtml(input: string): string {
